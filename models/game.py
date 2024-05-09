@@ -7,22 +7,25 @@ class Game:
 
     """
 
-    def __init__(self, prestige: int, atmosphere: str, title: str, introduction: str, description: str,
-                 *location_map: dict):
+    set_of_locations = None
+
+    def __init__(self, prestige, atmosphere, title, introduction, description,
+                 starting_locaation: Location):
+        """
+        Arguments:
+            prestige: Difficulty of game
+            atmosphere: Tone of game
+            title: Game title
+            introduction: A short line/quote to add impact to game atmosphere
+            description:
+            location_map: List of of locations
+        """
         self.prestige = prestige
         self.atmosphere = atmosphere
         self.title = title
         self.introduction = introduction
         self.description = description
-        self.locations = [Location(key, value) for key, value in location_map]
-        self.current_location = self.locations[0] if self.locations else None
-
-    def start(self):
-        """
-        Start the game
-        :return: void
-        """
-        pass
+        self.current_location = starting_locaation
 
     def _add_location(self, *locations):
 
@@ -41,3 +44,4 @@ class Game:
                     return
 
         return
+
