@@ -20,6 +20,18 @@ class DarkCave(Game):
         pass
 
 
+def scene_cave_entrance(game: DarkCave, flag):
+    if game.current_location.name == "Cave Entrance":
+        while(True):
+            print(f"West: {game.current_location.west.name}")
+            print(f"East: {game.current_location.east.name}")
+            print(f"North: {game.current_location.north.name}")
+            print(f"South {game.current_location.west.name}")
+
+            responce = input("\n Enter direction ")
+            if (responce != )
+    return flag
+
 if __name__ == '__main__':
     game_details = {'prestige': 2, "atmosphere": "spooky", "title": "Dark Cave",
                     "introduction": "Find the lost treasure stolen "
