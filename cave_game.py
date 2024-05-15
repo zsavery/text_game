@@ -22,17 +22,37 @@ class DarkCave(Game):
 
 def scene_cave_entrance(game: DarkCave, flag):
     if game.current_location.name == "Cave Entrance":
-        while(True):
+        while flag:
             print(f"West: {game.current_location.west.name}")
             print(f"East: {game.current_location.east.name}")
             print(f"North: {game.current_location.north.name}")
             print(f"South {game.current_location.west.name}")
+            print("Exit: to leave game.\n")
 
-            responce = input("\n Enter direction ")
-            if (responce != )
-    return flag
+            response = input("\n Enter direction ")
+            if response not in ["East", "West", "North", "South", "Exit"] and \
+                    response not in ["east", "west", "north", "south", "exit"]:
+                pass
+            else:
+                if response == "East" or response == "east":
+                    print("You find a glowing mushroom.")
+                    sel = game.current_location.east
+                elif response == "West" or response == "west":
+                    print("You find a flaming branch of ash wood.")
+                    sel = game.current_location.west
+                elif response == "North" or response == "north":
+                    print("You see a a crystal cavern filled with deep, blue water.")
+                    sel = game.current_location.north
+                elif response == "Exit" or response == "exit":
+                    print()
+                else:
+                    print("No where to go.")
+                flag = False
+    return sel, flag
+
 
 if __name__ == '__main__':
+    cave_entrance_flag = True
     game_details = {'prestige': 2, "atmosphere": "spooky", "title": "Dark Cave",
                     "introduction": "Find the lost treasure stolen "
                                     "from the Silver Tower.",
@@ -58,4 +78,10 @@ if __name__ == '__main__':
     game_details["locations"] = loc_1
     game = DarkCave(**game_details)
 
-    print(game.current_location.name)
+    print(f"Welcome to the {game.current_location.name}")
+
+    print(game.introduction)
+    # TODO: Create a do while to move to multiple locations
+    game.current_location, cave_entrance_flag = scene_cave_entrance(game, cave_entrance_flag)
+
+    print(f"\nCurrent Location: {game.current_location.name}\n{game.current_location.description}")
